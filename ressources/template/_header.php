@@ -7,6 +7,11 @@
     <title><?php echo $title ?></title>
     <link rel="stylesheet" href="/ressources/css/<?= $css ?>"> 
     <link rel="stylesheet" href="/ressources/css/template.css">
+    <?php 
+        echo $morecss??"";
+        echo $morejs??"";
+    ?>
+    <script src="/ressources/js/<?= $js ?>" defer></script>
     <script src="/ressources/script/script.js" defer></script>
 </head>
 <body>

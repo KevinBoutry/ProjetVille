@@ -1,0 +1,13 @@
+#map{
+    height : 85vh;
+}
+
+.info{
+    background-color: bisque;
+    height : 70vh;
+    width: 30vw;
+    z-index: 400;
+    position: fixed;
+    left: 10px;
+    top: 20vh;
+}

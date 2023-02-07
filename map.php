@@ -12,7 +12,13 @@ require "./ressources/template/_header.php";
 
 <div id="map"></div>
 
-<!-- <div class="info"></div> -->
+<div class="info">
+    <h2>Nom du lieu</h2>
+    <div id="image">
+        <img src="./ressources/img/placeholder.png" alt="placeholder">
+    </div>
+    <div>Contact ? Horaires ? Adresse</div>
+</div>
 
 
 <?php

@@ -94,7 +94,7 @@ if($_SERVER['REQUEST_METHOD']=='POST' && isset($_POST['save']))
     <input type="text" name="adresse" id="adresse"><br>
     <span class="error"><?php echo $error["adresse"]??"" ?></span>
 
-    <input type="submit" value="Enregistrer" name="save">
+    <input type="submit" value="Enregistrer" name="save" id="save">
 </form>
 
 <?php

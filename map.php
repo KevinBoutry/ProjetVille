@@ -8,17 +8,30 @@ $morejs = ' <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"integri
 
 require "./ressources/template/_header.php";
 
+require "./ressources/service/_pdo.php";
+
+$pdo = connexionPDO();
+$sql = $pdo->query("SELECT * FROM lieu");
+$lieu = $sql->fetchAll();
+
+$json = json_encode($lieu);
+$file = file_put_contents("./ressources/js/lieu.json", $json);
+
 ?>
 
 <div id="map"></div>
 
-<div class="info">
+<!-- <div class="infol">
     <h2>Nom du lieu</h2>
     <div id="image">
         <img src="./ressources/img/placeholder.png" alt="placeholder">
     </div>
     <div>Contact ? Horaires ? Adresse</div>
 </div>
+
+<div class="infor">
+
+</div> -->
 
 
 <?php

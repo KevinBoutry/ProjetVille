@@ -2,11 +2,21 @@
 var lat = 50.6333;
 var lon = 3.0582;
 var macarte = null;
+lieu = [];
+
+// Fonction d'initialisation qui s'exécute lorsque le DOM est chargé
+window.onload = function(){
+    startJson();
+};
             
 // Récupération du fichier json
-const urljson = "./ressources/js/lieu.json";
-fetch(urljson).then(handleFetch);
+function startJson()
+{
+    const urljson = "./ressources/js/lieu.json";
+    fetch(urljson).then(handleFetch);
+}
 
+// Vérification que le fichier json est bien récupéré
 function handleFetch(responseText)
 {
     if(responseText.ok)
@@ -20,21 +30,14 @@ function handleFetch(responseText)
         console.log(responseText.status, responseText.statusText);
     }
 }
+
+// Traitement du fichier json et déclenchement de la création de la map et des markers
 function showResult(data)
-{
-    var lieu = data
+{    
+    lieu = data;
+    initMap();
+    markerInfo();  
 }
-
-
-
-// On définit les points d'interet
-var interpts =
-{
-    "Mairie": { "lat": 50.63093, "lon": 3.0709 },
-	"Répu": { "lat": 50.63079, "lon": 3.06211 },
-    "Citadelle" : { "lat": 50.6409, "lon": 3.0446}
-}
-
 
 // Fonction d'initialisation de la carte
 function initMap() 
@@ -51,16 +54,10 @@ function initMap()
     }).addTo(macarte);
 
     // Nous ajoutons les marqueurs
-    for (interpt in interpts) {
-		var marker = L.marker([interpts[interpt].lat, interpts[interpt].lon]).addTo(macarte);
-	}   
+    lieu.forEach(lieu => {
+        var marker = L.marker([lieu.lat, lieu.lon]).addTo(macarte);
+    });
 }
-
-// Fonction d'initialisation qui s'exécute lorsque le DOM est chargé
-window.onload = function(){
-    initMap();
-    markerInfo();
-};
 
 // function qui ajoute l'eventListener sur chaques marqueurs
 function markerInfo()
@@ -68,18 +65,22 @@ function markerInfo()
     const markers = document.querySelectorAll(".leaflet-marker-icon");
     for (let i = 0; i < markers.length ; i++)
     {
-        markers[i].addEventListener("click",(i)=>showInfo(i));
+        markers[i].addEventListener("click",()=>showInfo(i));
     }
 }
 
 // Fonction déclenchée lorsqu'on clique sur un marqueur
-function showInfo(marker)
+function showInfo(i)
 {
+    console.log(i);
     const a = document.createElement("div");
     const b = document.createElement("div");
     document.body.append(a,b);
     a.classList.add("infol");
     b.classList.add("infor");
+    const h1 = document.createElement("h1");
+    h1.innerText = lieu[i].nomLieu;
+    a.append(h1);
     const map = document.querySelector("footer");
     map.addEventListener("click",()=>{
         document.body.removeChild(a);

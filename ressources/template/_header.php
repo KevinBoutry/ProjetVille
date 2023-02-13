@@ -12,7 +12,7 @@
         echo $morejs??"";
     ?>
     <script src="/ressources/js/<?= $js ?>" defer></script>
-    <script src="/ressources/script/script.js" defer></script>
+    <script src="/ressources/js/script.js" defer></script>
 </head>
 <body>
     <header>

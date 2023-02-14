@@ -53,6 +53,15 @@ function initMap()
         maxZoom: 20
     }).addTo(macarte);
 
+    // L.Routing.control({
+    //     waypoints: [
+    //         L.latLng(50.63093, 3.0709),
+    //         L.latLng(50.63079, 3.06211)
+    //     ],
+    //     routeWhileDragging: true
+    // }).addTo(macarte);
+
+
     // Nous ajoutons les marqueurs
     lieu.forEach(lieu => {
         var marker = L.marker([lieu.lat, lieu.lon]).addTo(macarte);
@@ -78,9 +87,16 @@ function showInfo(i)
     document.body.append(a,b);
     a.classList.add("infol");
     b.classList.add("infor");
-    const h1 = document.createElement("h1");
-    h1.innerText = lieu[i].nomLieu;
-    a.append(h1);
+    const h2 = document.createElement("h2");
+    h2.innerText = lieu[i].nomLieu;
+    const divimg = document.createElement("div");
+    divimg.classList.add("image");
+    const img = document.createElement("img");
+    img.src = `./ressources/img/${lieu[i].image}`
+    const adresse = document.createElement("span");
+    adresse.innerText= `${lieu[i].adresse}`
+    a.append(h2, divimg, adresse);
+    divimg.append(img);
     const map = document.querySelector("footer");
     map.addEventListener("click",()=>{
         document.body.removeChild(a);

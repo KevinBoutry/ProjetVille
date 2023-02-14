@@ -6,6 +6,6 @@ label{
     margin: 1rem;
 }
 
-input{
+input, textarea{
     margin-top: 5px;
 }

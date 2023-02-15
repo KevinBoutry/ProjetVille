@@ -7,12 +7,14 @@
     <title><?php echo $title ?></title>
     <link rel="stylesheet" href="/ressources/css/<?= $css ?>"> 
     <link rel="stylesheet" href="/ressources/css/template.css">
+    <link rel="stylesheet" href="/ressources/css/<?= $cardCss?>">
     <?php 
         echo $morecss??"";
         echo $morejs??"";
     ?>
     <script src="/ressources/js/<?= $js ?>" defer></script>
     <script src="/ressources/js/script.js" defer></script>
+    <script src="./ressources/js/<?= $cardJs?>" defer></script>
 </head>
 <body>
     <header>

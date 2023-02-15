@@ -1,17 +1,24 @@
 #map{
     height : 85vh;
 }
-
+.infol, .infor{
+    transform: scale(0);
+    transition: 200ms ease-in-out;
+}
+.infol.active, .infor.active{
+    transform:  scale(1);
+}
 .infol{
     background-color: bisque;
     height : 70vh;
-    width: 30vw;
+    width: 25vw;
     z-index: 400;
     position: fixed;
     left: 10px;
     top: 20vh;
     border-radius: 15px;
     display: flex;
+    
     flex-direction: column;
     align-items: center;
 }
@@ -19,7 +26,7 @@
 .infor{
     background-color: bisque;
     height : 70vh;
-    width: 30vw;
+    width: 25vw;
     z-index: 400;
     position: fixed;
     right: 10px;
@@ -37,7 +44,7 @@ h2{
 
 .image
 {
-    width: 25vw;
+    width: 18vw;
     height: 20vh;
     margin-top: 10px;
     margin-bottom: 20px;

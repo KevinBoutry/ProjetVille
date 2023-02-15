@@ -98,9 +98,20 @@ function showInfo(i)
     a.append(h2, divimg, adresse);
     divimg.append(img);
     const map = document.querySelector("footer");
+    setTimeout(() => {
+        a.classList.add("active");
+        b.classList.add("active");
+    },200);
+    
+    
     map.addEventListener("click",()=>{
-        document.body.removeChild(a);
-        document.body.removeChild(b);
+        a.classList.remove("active");
+        b.classList.remove("active");
+        setTimeout(() => {
+            document.body.removeChild(a);
+            document.body.removeChild(b);
+        },200);
+        
     })
 
 }

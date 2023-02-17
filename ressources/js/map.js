@@ -102,6 +102,18 @@ function showInfo(i)
         document.body.removeChild(a);
         document.body.removeChild(b);
     })
-
 }
 
+// version fetch
+// function showInfo(i)
+// {
+//     var data = {
+//         indexMarker: `${i}`
+//     };
+//     console.log(data);
+//     fetch("map.php",{
+//         method : "POST",
+//         body: JSON.stringify(data)
+//     })
+//         .then((response) => response.text());
+// }

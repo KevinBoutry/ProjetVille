@@ -105,3 +105,16 @@ function showInfo(i)
 }
 
 
+// version fetch
+// function showInfo(i)
+// {
+//     var data = {
+//         indexMarker: `${i}`
+//     };
+//     console.log(data);
+//     fetch("map.php",{
+//         method : "POST",
+//         body: JSON.stringify(data)
+//     })
+//         .then((response) => response.text());
+// }

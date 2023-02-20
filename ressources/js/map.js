@@ -53,13 +53,13 @@ function initMap()
         maxZoom: 20
     }).addTo(macarte);
 
-    L.Routing.control({
-        waypoints: [
-            L.latLng(50.63093, 3.0709),
-            L.latLng(50.63079, 3.06211)
-        ],
-        routeWhileDragging: true
-    }).addTo(macarte);
+    // L.Routing.control({
+    //     waypoints: [
+    //         L.latLng(50.63093, 3.0709),
+    //         L.latLng(50.63079, 3.06211)
+    //     ],
+    //     routeWhileDragging: true
+    // }).addTo(macarte);
 
 
     // Nous ajoutons les marqueurs
@@ -78,7 +78,7 @@ function markerInfo()
     }
 }
 
-// Fonction déclenchée lorsqu'on clique sur un marqueur
+// Fonction déclenchée lorsqu'on clique sur un marqueur (version création de la div via JS)
 function showInfo(i)
 {
     console.log(i);
@@ -102,6 +102,6 @@ function showInfo(i)
         document.body.removeChild(a);
         document.body.removeChild(b);
     })
-
 }
+
 

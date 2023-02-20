@@ -19,7 +19,7 @@ require "./ressources/template/_header.php";
 require "./ressources/service/_pdo.php";
 
 $pdo = connexionPDO();
-$sql = $pdo->query("SELECT * FROM lieu");
+$sql = $pdo->query("SELECT * FROM lieu l LEFT JOIN quizz q ON l.idLieu = q.idLieu");
 $lieu = $sql->fetchAll();
 
 $json = json_encode($lieu);
@@ -35,10 +35,16 @@ $file = file_put_contents("./ressources/js/lieu.json", $json);
         <img src="./ressources/img/placeholder.png" alt="placeholder">
     </div>
     <div>Contact ? Horaires ? Adresse</div>
-</div>
+</div> -->
 
-<div class="infor">
-
+<!-- <div class="infor">
+    <span class="question">Ici se trouve la question ?</span>
+    <ul>
+        <li class="reponse">Ici on aura la réponse 1</li>
+        <li class="reponse">Ici on aura la réponse 2</li>
+        <li class="reponse">Ici on aura la réponse 3</li>
+        <li class="reponse">Ici on aura la réponse 4</li>
+    </ul>
 </div> -->
 
 

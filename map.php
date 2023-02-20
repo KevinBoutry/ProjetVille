@@ -21,17 +21,26 @@ require "./ressources/service/_pdo.php";
 $pdo = connexionPDO();
 $sql = $pdo->query("SELECT * FROM lieu l LEFT JOIN quizz q ON l.idLIeu = q.idLieu");
 $lieu = $sql->fetchAll();
-
 $json = json_encode($lieu);
 $file = file_put_contents("./ressources/js/lieu.json", $json);
 
 $indexJson = json_decode(file_get_contents("php://input"), true);
-$indexMarker = $indexJson["indexMarker"];
-var_dump($indexMarker);
 
+// $indexMarker = $indexJson["indexMarker"];
 ?>
 
+<?php if (isset($indexJson['indexMarker'])): ?>
+
+    <div class="infol">
+        <h2></h2>
+    </div>
+
+
+<?php endif; ?>
+
 <div id="map"></div>
+
+
 
 <!-- <div class="infol">
     <h2>Nom du lieu</h2>

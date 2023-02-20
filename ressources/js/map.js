@@ -79,42 +79,80 @@ function markerInfo()
 }
 
 // Fonction déclenchée lorsqu'on clique sur un marqueur (version création de la div via JS)
-function showInfo(i)
-{
-    console.log(i);
-    const a = document.createElement("div");
-    const b = document.createElement("div");
-    document.body.append(a,b);
-    a.classList.add("infol");
-    b.classList.add("infor");
-    const h2 = document.createElement("h2");
-    h2.innerText = lieu[i].nomLieu;
-    const divimg = document.createElement("div");
-    divimg.classList.add("image");
-    const img = document.createElement("img");
-    img.src = `./ressources/img/${lieu[i].image}`
-    const adresse = document.createElement("span");
-    adresse.innerText= `${lieu[i].adresse}`
-    a.append(h2, divimg, adresse);
-    divimg.append(img);
-    const map = document.querySelector("footer");
-    map.addEventListener("click",()=>{
-        document.body.removeChild(a);
-        document.body.removeChild(b);
-    })
-}
+// function showInfo(i)
+// {
+//     const a = document.createElement("div");
+//     const b = document.createElement("div");
+//     document.body.append(a,b);
+//     a.classList.add("infol");
+//     b.classList.add("infor");
+//     const h2 = document.createElement("h2");
+//     h2.innerText = lieu[i].nomLieu;
+//     const divimg = document.createElement("div");
+//     divimg.classList.add("image");
+//     const img = document.createElement("img");
+//     img.src = `./ressources/img/${lieu[i].image}`
+//     const adresse = document.createElement("span");
+//     adresse.innerText= `${lieu[i].adresse}`
+//     a.append(h2, divimg, adresse);
+//     divimg.append(img);
+//     const question = document.createElement("span");    
+//     question.classList.add("question");
+//     question.innerText = lieu[i].question;
+//     const reponse = document.createElement("ul");
+//     const choix1 = document.createElement("li");
+//     choix1.classList.add("reponse")
+//     choix1.innerText = lieu[i].choix1;
+//     const choix2 = document.createElement("li");
+//     choix2.classList.add("reponse")
+//     choix2.innerText = lieu[i].choix2;    
+//     const choix3 = document.createElement("li");
+//     choix3.classList.add("reponse")
+//     choix3.innerText = lieu[i].choix3;
+//     const choix4 = document.createElement("li");
+//     choix4.classList.add("reponse")
+//     choix4.innerText = lieu[i].choix4;  
+//     b.append(question, reponse);
+//     reponse.append(choix1, choix2, choix3, choix4);
+//     const map = document.querySelector("footer");
+//     map.addEventListener("click",()=>{
+//         document.body.removeChild(a);
+//         document.body.removeChild(b);
+//     })
+// }
 
 
 // version fetch
-// function showInfo(i)
-// {
-//     var data = {
-//         indexMarker: `${i}`
-//     };
-//     console.log(data);
-//     fetch("map.php",{
-//         method : "POST",
-//         body: JSON.stringify(data)
-//     })
-//         .then((response) => response.text());
-// }
+function showInfo(i)
+{
+    var data = {
+        "indexMarker": `${i}`
+    };
+    console.log(data);
+    fetch("map.php",{
+        method : "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => {
+        console.log(response);
+        if (response.ok) {
+            console.log('Tout se passe bien')
+            return response.json()
+        } else {
+            console.log('Erreur : ' + response.statusText)
+        }
+        return response.json()        
+    })
+    .then(json => {
+        if (json.success === true) {
+            console.log('les json est : ', json.success);
+        } else {
+            console.log('le json est ', json.message);
+        }
+    })
+    .catch(error => console.log('erreur de fetch', error))
+    .catch(error => console.log('erreur de json', error));
+}

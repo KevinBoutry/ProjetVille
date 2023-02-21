@@ -107,9 +107,18 @@ function markerInfo() {
 //     b.append(question, reponse);
 //     reponse.append(choix1, choix2, choix3, choix4);
 //     const map = document.querySelector("footer");
-//     map.addEventListener("click",()=>{
-//         document.body.removeChild(a);
-//         document.body.removeChild(b);
+//     setTimeout(() => {
+        a.classList.add("active");
+        b.classList.add("active");
+    },200);
+    
+    
+    map.addEventListener("click",()=>{
+//         a.classList.remove("active");
+        b.classList.remove("active");
+        setTimeout(() => {
+            document.body.removeChild(a);
+//             document.body.removeChild(b);
 //     })
 // }
 
@@ -125,6 +134,8 @@ function showInfo(i) {
             "Content-Type": "application/json"
         },
         body: JSON.stringify(data)
+        },200);
+        
     })
         .then(response => {
             console.log(response);

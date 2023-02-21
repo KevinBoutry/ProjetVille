@@ -24,19 +24,7 @@ $lieu = $sql->fetchAll();
 $json = json_encode($lieu);
 $file = file_put_contents("./ressources/js/lieu.json", $json);
 
-$indexJson = json_decode(file_get_contents("php://input"), true);
-
-// $indexMarker = $indexJson["indexMarker"];
 ?>
-
-<?php if (isset($indexJson['indexMarker'])): ?>
-
-    <div class="infol">
-        <h2></h2>
-    </div>
-
-
-<?php endif; ?>
 
 <div id="map"></div>
 
@@ -59,7 +47,6 @@ $indexJson = json_decode(file_get_contents("php://input"), true);
         <li class="reponse">Ici on aura la réponse 4</li>
     </ul>
 </div> -->
-
 
 <?php
 

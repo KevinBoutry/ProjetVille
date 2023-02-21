@@ -5,53 +5,47 @@ var macarte = null;
 lieu = [];
 
 // Fonction d'initialisation qui s'exécute lorsque le DOM est chargé
-window.onload = function(){
+window.onload = function () {
     startJson();
 };
-            
+
 // Récupération du fichier json
-function startJson()
-{
+function startJson() {
     const urljson = "./ressources/js/lieu.json";
     fetch(urljson).then(handleFetch);
 }
 
 // Vérification que le fichier json est bien récupéré
-function handleFetch(responseText)
-{
-    if(responseText.ok)
-    {
+function handleFetch(responseText) {
+    if (responseText.ok) {
         responseText.json()
             .then(showResult)
-            .catch(error=>console.log(error))
+            .catch(error => console.log(error))
     }
-    else
-    {
+    else {
         console.log(responseText.status, responseText.statusText);
     }
 }
 
 // Traitement du fichier json et déclenchement de la création de la map et des markers
-function showResult(data)
-{    
+function showResult(data) {
     lieu = data;
     initMap();
-    markerInfo();  
+    markerInfo();
 }
 
 // Fonction d'initialisation de la carte
-function initMap() 
-{
+function initMap() {
     // Créer l'objet "macarte" et l'insèrer dans l'élément HTML qui a l'ID "map"
     macarte = L.map('map').setView([lat, lon], 11);
     // Leaflet ne récupère pas les cartes (tiles) sur un serveur par défaut. Nous devons lui préciser où nous souhaitons les récupérer. Ici, openstreetmap.fr
     L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png',
-    {
-        // Il est toujours bien de laisser le lien vers la source des données
-        attribution: 'données © <a href="//osm.org/copyright">OpenStreetMap</a>/ODbL - rendu <a href="//openstreetmap.fr">OSM France</a>',
-        minZoom: 14,
-        maxZoom: 20
-    }).addTo(macarte);
+        {
+            // Il est toujours bien de laisser le lien vers la source des données
+            attribution: 'données © <a href="//osm.org/copyright">OpenStreetMap</a>/ODbL - rendu <a href="//openstreetmap.fr">OSM France</a>',
+            minZoom: 14,
+            maxZoom: 20
+        }).addTo(macarte);
 
     // L.Routing.control({
     //     waypoints: [
@@ -69,12 +63,10 @@ function initMap()
 }
 
 // function qui ajoute l'eventListener sur chaques marqueurs
-function markerInfo()
-{
+function markerInfo() {
     const markers = document.querySelectorAll(".leaflet-marker-icon");
-    for (let i = 0; i < markers.length ; i++)
-    {
-        markers[i].addEventListener("click",()=>showInfo(i));
+    for (let i = 0; i < markers.length; i++) {
+        markers[i].addEventListener("click", () => showInfo(i));
     }
 }
 
@@ -121,38 +113,38 @@ function markerInfo()
 //     })
 // }
 
-
 // version fetch
-function showInfo(i)
-{
+function showInfo(i) {
     var data = {
         "indexMarker": `${i}`
     };
     console.log(data);
-    fetch("map.php",{
-        method : "POST",
+    fetch("mapResponse.php", {
+        method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
         body: JSON.stringify(data)
     })
-    .then(response => {
-        console.log(response);
-        if (response.ok) {
-            console.log('Tout se passe bien')
-            return response.json()
-        } else {
-            console.log('Erreur : ' + response.statusText)
-        }
-        return response.json()        
-    })
-    .then(json => {
-        if (json.success === true) {
-            console.log('les json est : ', json.success);
-        } else {
-            console.log('le json est ', json.message);
-        }
-    })
-    .catch(error => console.log('erreur de fetch', error))
-    .catch(error => console.log('erreur de json', error));
+        .then(response => {
+            console.log(response);
+            if (response.ok) {
+                console.log('Tout se passe bien')
+                return response.json()
+            } else {
+                console.log('Erreur : ' + response.statusText)
+            }
+        })
+        .then(data=>{
+            console.log(data)
+        })
+        // .then(json => {
+        //     if (json.success === true) {
+        //         console.log('les json est : ', json.success);
+        //     } else {
+        //         console.log('le json est ', json.message);
+        //     }
+        // })
+        .catch(error => console.log('erreur de fetch', error))
+        .catch(error => console.log('erreur de json', error));
 }

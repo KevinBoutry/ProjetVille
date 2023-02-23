@@ -20,16 +20,16 @@ require "./ressources/template/_header.php";
         <input type="text" placeholder="Entrer le nom d'utilisateur" name="username" required>
 
         </p>
-       <p>
+    <p>
 
-           <label><b>Mot de passe</b></label>
-           <input type="password" placeholder="Entrer le mot de passe" name="password" required>
+        <label><b>Mot de passe</b></label>
+        <input type="password" placeholder="Entrer le mot de passe" name="password" required>
         </p>
         
         <input type="submit" id='submit' value='LOGIN'>
         
         <br>
-        <label><a href="/inscription">créer un compte</a></label>
+        <label><a href="/inscription.php">créer un compte</a></label>
         <?php
         if (isset($_POST['erreur'])) {
             $err = $_POST['erreur'];

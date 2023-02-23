@@ -18,5 +18,6 @@
 </head>
 <body>
     <header>
+        <img src="../../ressources/img/logo.png" alt="logo" id="logo">
         <h1><?php echo $title ?></h1>
     </header>

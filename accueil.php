@@ -43,14 +43,8 @@ require "./ressources/template/_header.php";
 </div>
 </div>
 
-
-
-
-
-
 <script src="https://accounts.google.com/gsi/client" async defer></script>
 <?php
-
 
 require "./ressources/template/_footer.php"
 

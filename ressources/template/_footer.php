@@ -1,5 +1,6 @@
 <footer>
-    <a href="/">Retourner à l'accueil</a>
+    <span>Nos réseaux sociaux :</span>
+</button>
 </footer>
 </body>
 </html>

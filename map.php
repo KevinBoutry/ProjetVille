@@ -26,21 +26,17 @@ $file = file_put_contents("./ressources/js/lieu.json", $json);
 
 ?>
 
-
-
 <div id="map"></div>
 
-
-
-<!-- <div class="infol">
+<<div class="infol">
     <h2>Nom du lieu</h2>
     <div id="image">
         <img src="./ressources/img/placeholder.png" alt="placeholder">
     </div>
     <div>Contact ? Horaires ? Adresse</div>
-</div> -->
+</div>
 
-<!-- <div class="infor">
+<div class="infor">
     <span class="question">Ici se trouve la question ?</span>
     <ul>
         <li class="reponse">Ici on aura la réponse 1</li>
@@ -48,7 +44,7 @@ $file = file_put_contents("./ressources/js/lieu.json", $json);
         <li class="reponse">Ici on aura la réponse 3</li>
         <li class="reponse">Ici on aura la réponse 4</li>
     </ul>
-</div> -->
+</div>
 
 <?php
 

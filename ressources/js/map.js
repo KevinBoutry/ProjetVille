@@ -111,7 +111,6 @@ function showInfo(i)
         a.classList.add("active");
         b.classList.add("active");
     },200);
-
     
     map.addEventListener("click",()=>{
         a.classList.remove("active");

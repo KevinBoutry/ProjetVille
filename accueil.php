@@ -4,6 +4,7 @@ $css = "accueil.css";
 $title = "Accueil";
 require "./ressources/template/_header.php";
 
+
 ?>
 <div class="acceuil">
     <h1>Bienvenue à Lille</h1>

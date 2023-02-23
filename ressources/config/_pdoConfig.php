@@ -2,7 +2,7 @@
 
 return[
     "host" => "localhost",
-    "database" => "lille",
+    "database" => "lille1",
     "user" => "root",
     "password" => "",
     "charset" => "utf8mb4",

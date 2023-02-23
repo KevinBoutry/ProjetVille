@@ -73,11 +73,12 @@ input[type=submit]:hover {
 }
 
 /*bouton google*/
-#bouton {
-    bottom: 20%;
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%, -50%);
+#bouton  {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 }
 
 

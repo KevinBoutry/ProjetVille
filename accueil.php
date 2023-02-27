@@ -3,34 +3,86 @@
 $css = "accueil.css";
 $title = "Accueil";
 require "./ressources/template/_header.php";
+require "./ressources/service/_shouldBeLogged.php";
+require "./ressources/service/_pdo.php";
 
+shouldBeLogged(false, "/map.php");
+
+if(isset($_SESSION["logged"]) && $_SESSION["logged"] === true)
+{
+    header("Location: /map.php");
+    exit;
+}
+$email = $password = "";
+$error = [];
+
+if($_SERVER['REQUEST_METHOD']=='POST' && isset($_POST['login']))
+{
+    if(empty($_POST["email"]))
+        $error["email"] = "Veuillez entrer un email";
+    else
+        $email = trim($_POST["email"]);
+    
+    if(empty($_POST["password"]))
+        $error["password"] = "Veuillez entrer un mot de passe";
+    else
+        $password = trim($_POST["password"]);
+    if(empty($error))
+    {
+        $pdo = connexionPDO();
+        $sql = $pdo->prepare("SELECT * FROM user WHERE email = :em");
+        $sql->execute(["em"=>$email]);
+        $user = $sql->fetch();
+        var_dump($user);
+
+        if($user){
+            if(password_verify($password, $user["password"]))
+            {
+                $_SESSION["logged"] = true; 
+                $_SESSION["email"] = $user["email"];
+                $_SESSION["idUser"] = $user["idUser"];
+                $_SESSION["expire"] = time()+ (60*60);
+                header("location: /map.php");
+                exit;
+            }
+            else
+            {
+                $error["login"] = "Email ou Mot de passe incorrect.";
+            }
+        }
+        else
+        {
+            $error["login"] = "Email ou Mot de passe incorrect.";
+        }
+    }        
+}
 
 ?>
-<div class="acceuil">
+<div class="accueil">
     <h1>Bienvenue à Lille</h1>
     
 </div>
 <div>
     <!-- zone de connexion -->
 
-    <form action="verification.php" method="POST">
+    <form action="" method="POST">
         <h1>Connexion</h1>
-        <label><b>Nom d'utilisateur</b></label>
-        <input type="text" placeholder="Entrer le nom d'utilisateur" name="username" required>
+        <label><b>Adresse mail</b></label>
+        <input type="text" placeholder="Entrer votre email" name="email" required>
 
         <label><b>Mot de passe</b></label>
         <input type="password" placeholder="Entrer le mot de passe" name="password" required>
         <br>
         <br>
 
-        <input type="submit" id='submit' value='LOGIN'>
+        <input type="submit" id='submit' value='login' name="login">
         <br>
-        <label><a href="">créer un compte</a></label>
+        <label><a href="./inscription.php">créer un compte</a></label>
         <?php
         if (isset($_POST['erreur'])) {
             $err = $_POST['erreur'];
             if ($err == 1 || $err == 2)
-                echo "<p style='color:red'>Utilisateur ou mot de passe incorrect</p>";
+                echo "<p style='color:red'>email ou mot de passe incorrect</p>";
         }
         ?>
     </form>

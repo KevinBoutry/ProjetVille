@@ -4,6 +4,13 @@ $css = "inscription.css";
 $title = "Inscription";
 require "./ressources/template/_header.php";
 require "./ressources/service/_csrf.php";
+require "./ressources/service/_shouldBeLogged.php";
+
+if(isset($_SESSION["logged"]) && $_SESSION["logged"] === true)
+{
+    header("Location: ./map.php");
+    exit;
+}
 
 $email = $password = "";
 $error = [];
@@ -53,7 +60,12 @@ if($_SERVER['REQUEST_METHOD']=='POST' && isset($_POST['inscription']))
     {
         $sql = $pdo->prepare("INSERT INTO user(email, password) VALUES(?, ?)");
         $sql->execute([$email, $password]);
-
+        session_start();
+        $_SESSION["logged"] = true;
+        $_SESSION["email"] = $email;
+        $_SESSION["expire"] = time() + (60*60);
+        header("Location: ./map.php");
+        exit;
     }
 }
 

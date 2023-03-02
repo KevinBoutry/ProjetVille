@@ -55,6 +55,18 @@ footer img{
     position: absolute;
     height: 8vh;
     margin-left: 10px;
-    top: 1vh;
-    
+    top: 1vh;    
+}
+
+#user{
+    position: absolute;
+    top: 2vh;
+    right: 5px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+#user a{
+    color: red;
 }

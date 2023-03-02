@@ -32,14 +32,15 @@ if($_SERVER['REQUEST_METHOD']=='POST' && isset($_POST['login']))
         $pdo = connexionPDO();
         $sql = $pdo->prepare("SELECT * FROM user WHERE email = :em");
         $sql->execute(["em"=>$email]);
-        $user = $sql->fetch();
-        var_dump($user);
+        $user = $sql->fetch();        
 
         if($user){
             if(password_verify($password, $user["password"]))
             {
                 $_SESSION["logged"] = true; 
                 $_SESSION["email"] = $user["email"];
+                $_SESSION["admin"] = $user["admin"];
+                $_SESSION["superAdmin"] = $user["superAdmin"];
                 $_SESSION["idUser"] = $user["idUser"];
                 $_SESSION["expire"] = time()+ (60*60);
                 header("location: /map.php");
@@ -59,9 +60,9 @@ if($_SERVER['REQUEST_METHOD']=='POST' && isset($_POST['login']))
 
 ?>
 <div class="accueil">
-    <h1>Bienvenue à Lille</h1>
-    
+    <h1>Bienvenue à Lille</h1>    
 </div>
+
 <div>
     <!-- zone de connexion -->
 
@@ -73,11 +74,12 @@ if($_SERVER['REQUEST_METHOD']=='POST' && isset($_POST['login']))
         <label><b>Mot de passe</b></label>
         <input type="password" placeholder="Entrer le mot de passe" name="password" required>
         <br>
-        <br>
 
         <input type="submit" id='submit' value='login' name="login">
         <br>
         <label><a href="./inscription.php">créer un compte</a></label>
+        <br>
+        <a href="./map.php">Continuer sans se connecter</a>
         <?php
         if (isset($_POST['erreur'])) {
             $err = $_POST['erreur'];
@@ -87,12 +89,12 @@ if($_SERVER['REQUEST_METHOD']=='POST' && isset($_POST['login']))
         ?>
     </form>
     <div id="bouton">
-    <div id="g_id_onload" data-client_id="526772582364-1r50q1bsceackgl23qphee8spgjmahtn.apps.googleusercontent.com" data-context="signin" data-ux_mode="popup" data-login_uri="http://localhost" data-auto_prompt="false">
-    </div>
+        <div id="g_id_onload" data-client_id="526772582364-1r50q1bsceackgl23qphee8spgjmahtn.apps.googleusercontent.com" data-context="signin" data-ux_mode="popup" data-login_uri="http://localhost" data-auto_prompt="false">
+        </div>
 
-    <div class="g_id_signin" data-type="standard" data-shape="pill" data-theme="filled_blue" data-text="signin_with" data-size="large" data-logo_alignment="left">
+        <div class="g_id_signin" data-type="standard" data-shape="pill" data-theme="filled_blue" data-text="signin_with" data-size="large" data-logo_alignment="left">
+        </div>
     </div>
-</div>
 </div>
 
 <script src="https://accounts.google.com/gsi/client" async defer></script>

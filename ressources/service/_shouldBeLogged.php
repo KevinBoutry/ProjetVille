@@ -3,7 +3,7 @@ if(session_status() === PHP_SESSION_NONE)
     session_start();
 
 /**
- * Vérifie si l'utilisateur est connecté ou non, et le redirge dans le cas contraire.
+ * Vérifie si l'utilisateur est connecté ou non, et le redirige dans le cas contraire.
  * 
  * Si $logged est à true, vérifie si l'utilisateur est connecté
  * Si $logged est à false, vérifie si l'utilisateur est déconnecté

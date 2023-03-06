@@ -43,7 +43,7 @@ function isCSRFValid(): bool
 }
 
 /**
- * Assini un string donné en paramètre et le retourne.
+ * Assingne un string donné en paramètre et le retourne.
  *
  * @param string $data
  * @return string

@@ -18,11 +18,10 @@
 </head>
 <body>
     <header>
-        <img src="../../ressources/img/logo.png" alt="logo" id="logo">
+        <a href="../accueil.php"><img src="../../ressources/img/logo.png" alt="logo" id="logo"></a>
         <h1><?php echo $title; ?></h1>
         <?php 
             session_start();
-            // var_dump($_SESSION)
         ?>
         <?php if(isset($_SESSION["logged"]) && $_SESSION["logged"] === true): ?>        
         <div id="user">
@@ -30,7 +29,9 @@
             <a href="/deconnexion.php">Déconnexion</a>
             <?php endif ?> 
             <?php if(isset($_SESSION["admin"]) && $_SESSION["admin"] === 1): ?>
-            <a href="/admin.php">ADMIN</a>
+            <a href="/admin.php">ADMIN</a>            
+            <?php endif ?>
+            <?php if(isset($_SESSION["superAdmin"]) && $_SESSION["superAdmin"] === 1): ?>
             <a href="/users.php">USERS</a>
             <?php endif ?>
         </div>

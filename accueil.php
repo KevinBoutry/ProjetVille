@@ -81,6 +81,14 @@ if($_SERVER['REQUEST_METHOD']=='POST' && isset($_POST['login']))
         <label><a href="./inscription.php">créer un compte</a></label>
         <br>
         <a href="./map.php">Continuer sans se connecter</a>
+        <div id="bouton">
+        <div id="g_id_onload" data-client_id="526772582364-1r50q1bsceackgl23qphee8spgjmahtn.apps.googleusercontent.com" data-context="signin" data-ux_mode="popup" data-login_uri="http://localhost" data-auto_prompt="false">
+        </div>
+
+        <div class="g_id_signin" data-type="standard" data-shape="pill" data-theme="filled_blue" data-text="signin_with" data-size="large" data-logo_alignment="left">
+        </div>
+    </div>
+</div>
         <?php
         if (isset($_POST['erreur'])) {
             $err = $_POST['erreur'];
@@ -90,14 +98,8 @@ if($_SERVER['REQUEST_METHOD']=='POST' && isset($_POST['login']))
         
         ?>
     </form>
-    <div id="bouton">
-        <div id="g_id_onload" data-client_id="526772582364-1r50q1bsceackgl23qphee8spgjmahtn.apps.googleusercontent.com" data-context="signin" data-ux_mode="popup" data-login_uri="http://localhost" data-auto_prompt="false">
-        </div>
+    
 
-        <div class="g_id_signin" data-type="standard" data-shape="pill" data-theme="filled_blue" data-text="signin_with" data-size="large" data-logo_alignment="left">
-        </div>
-    </div>
-</div>
 
 <script src="https://accounts.google.com/gsi/client" async defer></script>
 <?php

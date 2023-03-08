@@ -17,7 +17,7 @@ if(empty($_GET["id"]))
 }
 
 $pdo = connexionPDO();
-$sql = $pdo->prepare("DELETE FROM users WHERE idUser = ?");
+$sql = $pdo->prepare("DELETE FROM user WHERE idUser = ?");
 $sql->execute([(int)$_GET["id"]]);
 header("Location: ./users.php");
 

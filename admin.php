@@ -145,9 +145,11 @@ if($_SERVER['REQUEST_METHOD']=='POST' && isset($_POST['save']))
     <!-- Choix 3 -->
     <label for="choix3">Choix 3 :</label>
     <textarea type="text" name="choix3" id="choix3" cols="60" rows="1"></textarea><br>
+    <span class="error"><?php echo $error["choix3"]??"" ?></span>
     <!-- Choix 4 -->
     <label for="choix1">Choix 4 :</label>
     <textarea type="text" name="choix4" id="choix4" cols="60" rows="1"></textarea><br>
+    <span class="error"><?php echo $error["choix4"]??"" ?></span>
     <!-- Réponse -->
     <label for="reponse">Réponse :</label>
     <input type="number" name="reponse" id="reponse"><br>

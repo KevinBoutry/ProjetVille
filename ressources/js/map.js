@@ -109,6 +109,7 @@ function showInfo(i)
     b.append(question, reponse);
     reponse.append(choix1, choix2, choix3, choix4);
     const map = document.querySelector(".overlay");
+    
     setTimeout(() => {
         a.classList.add("active");
         b.classList.add("active");

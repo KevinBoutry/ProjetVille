@@ -24,14 +24,15 @@ $users = $sql->fetchAll();
             <th>id</th>
             <th>email</th>
             <th>admin</th>
-            <th>action</th>
+            <th>droits</th>
+            <th>supprimer</th>
         </thead>
         <tbody>
             <?php foreach($users as $row): ?>
                 <tr>
                     <td><?php echo $row["idUser"]?></td>
                     <td><?php echo $row["email"]?></td>
-                    <td><?php echo $row["admin"]?></td>
+                    <td><?php if ($row["admin"] === 1) echo "yes" ?></td>
                     <?php if($row["admin"] === 0 ): ?>
                         <td>
                             <a href="./addright.php?id=<?= $row["idUser"] ?>">Donner droit admin</a>
@@ -39,9 +40,12 @@ $users = $sql->fetchAll();
                     <?php endif; ?>
                     <?php if($_SESSION["superAdmin"] === 1 && $row["admin"] === 1):?>
                         <td>                   
-                        <a href="./delright.php?id=<?= $row["idUser"] ?>">Supprimer droit admin</a>
+                            <a href="./delright.php?id=<?= $row["idUser"] ?>">Supprimer droit admin</a>
                         </td> 
                     <?php endif; ?>
+                    <td>
+                        <a href="./deluser.php?id=<?= $row["idUser"] ?>">Supprimer Utilisateur</a>
+                    </td>
                 </tr>
             <?php endforeach; ?>
         </tbody>

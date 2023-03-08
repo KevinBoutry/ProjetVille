@@ -60,7 +60,7 @@ if($_SERVER['REQUEST_METHOD']=='POST' && isset($_POST['login']))
 
 ?>
 <div class="accueil">
-    <h1>Bienvenue à Lille</h1>    
+     
 </div>
 
 <div>

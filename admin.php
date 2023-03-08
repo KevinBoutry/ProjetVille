@@ -1,6 +1,7 @@
 <?php
 
 $css = "admin.css";
+$js = "admin.js";
 $title = "Admin";
 require "./ressources/template/_header.php";
 
@@ -154,6 +155,10 @@ if($_SERVER['REQUEST_METHOD']=='POST' && isset($_POST['save']))
 
     <input type="submit" value="Enregistrer" name="save" id="save">
 </form>
+
+<div id="preview">
+    <img src="/ressources/img/placeholder.png" alt="placeholder">
+</div>
 
 <?php
 

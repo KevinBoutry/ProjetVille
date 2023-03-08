@@ -75,9 +75,11 @@ function showInfo(i)
 {
     const a = document.createElement("div");
     const b = document.createElement("div");
-    document.body.append(a,b);
+    const c = document.createElement("div");
+    document.body.append(a,b,c);
     a.classList.add("infol");
     b.classList.add("infor");
+    c.classList.add("overlay")
     const h2 = document.createElement("h2");
     h2.innerText = lieu[i].nomLieu;
     const divimg = document.createElement("div");
@@ -106,7 +108,8 @@ function showInfo(i)
     choix4.innerText = lieu[i].choix4;  
     b.append(question, reponse);
     reponse.append(choix1, choix2, choix3, choix4);
-    const map = document.querySelector("footer");
+    const map = document.querySelector(".overlay");
+    
     setTimeout(() => {
         a.classList.add("active");
         b.classList.add("active");
@@ -118,6 +121,7 @@ function showInfo(i)
         setTimeout(() => {
             document.body.removeChild(a);
             document.body.removeChild(b);
+            document.body.removeChild(c);
     })})
 }
 

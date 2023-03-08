@@ -1,0 +1,15 @@
+table{
+    width: 100%;
+    margin: 20px
+}
+
+th{
+    background-color: red;
+    color: antiquewhite;
+    height: 30px;
+}
+
+td{
+    text-align: center;
+}
+

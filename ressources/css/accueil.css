@@ -1,4 +1,4 @@
-.acceuil {
+.accueil {
     content: "";
     position: fixed;
     height: 100%;
@@ -83,8 +83,7 @@ input[type=submit]:hover {
 
 }
 
-
-
 h1 {
     text-align: center;
 }
+

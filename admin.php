@@ -1,8 +1,15 @@
 <?php
 
 $css = "admin.css";
+$js = "admin.js";
 $title = "Admin";
 require "./ressources/template/_header.php";
+
+if(!isset($_SESSION["admin"]) || $_SESSION["admin"] === 0)
+{
+    header("Location: ./map.php");
+    exit;
+}
 
 $nomLieu = $adresse = $question = $choix1 = $choix2 = $choix3 = $choix4 = "";
 $lat = $lon = $reponse = 0;
@@ -148,6 +155,10 @@ if($_SERVER['REQUEST_METHOD']=='POST' && isset($_POST['save']))
 
     <input type="submit" value="Enregistrer" name="save" id="save">
 </form>
+
+<div id="preview">
+    <img src="/ressources/img/placeholder.png" alt="placeholder">
+</div>
 
 <?php
 

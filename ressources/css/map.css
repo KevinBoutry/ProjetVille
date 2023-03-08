@@ -12,7 +12,7 @@
     background-color: antiquewhite;
     height : 70vh;
     width: 25vw;
-    z-index: 400;
+    z-index: 402;
     position: fixed;
     left: 10px;
     top: 20vh;
@@ -27,7 +27,7 @@
     background-color: antiquewhite;
     height : 70vh;
     width: 25vw;
-    z-index: 400;
+    z-index: 402;
     position: fixed;
     right: 10px;
     top: 20vh;
@@ -73,4 +73,14 @@ h2{
 
 .reponse:hover{
     background-color: grey;
+}
+
+.overlay{
+    width: 100vw;
+    height: 100vh;
+    z-index: 401;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    background-color: transparent;
 }

@@ -7,8 +7,9 @@
     <title><?php echo $title ?></title>
     <link rel="stylesheet" href="/ressources/css/<?= $css ?>"> 
     <link rel="stylesheet" href="/ressources/css/template.css">
-
+    <link rel="stylesheet" href="/ressources/css/<?= $cardCss?>">
     <?php 
+   /* <link rel="stylesheet" href="/ressources/css/<?= $cardCss?> " >*/
         echo $morecss??"";
         echo $morejs??"";
     ?>

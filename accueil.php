@@ -60,7 +60,7 @@ if($_SERVER['REQUEST_METHOD']=='POST' && isset($_POST['login']))
 
 ?>
 <div class="accueil">
-     
+
 </div>
 
 <div>
@@ -71,6 +71,7 @@ if($_SERVER['REQUEST_METHOD']=='POST' && isset($_POST['login']))
         <label><b>Adresse mail</b></label>
         <input type="text" placeholder="Entrer votre email" name="email" required>
 
+
         <label><b>Mot de passe</b></label>
         <input type="password" placeholder="Entrer le mot de passe" name="password" required>
         <br>
@@ -80,15 +81,7 @@ if($_SERVER['REQUEST_METHOD']=='POST' && isset($_POST['login']))
         <label><a href="./inscription.php">créer un compte</a></label>
         <br>
         <a href="./map.php">Continuer sans se connecter</a>
-        <?php
-        if (isset($_POST['erreur'])) {
-            $err = $_POST['erreur'];
-            if ($err == 1 || $err == 2)
-                echo "<p style='color:red'>email ou mot de passe incorrect</p>";
-        }
-        ?>
-    </form>
-    <div id="bouton">
+        <div id="bouton">
         <div id="g_id_onload" data-client_id="526772582364-1r50q1bsceackgl23qphee8spgjmahtn.apps.googleusercontent.com" data-context="signin" data-ux_mode="popup" data-login_uri="http://localhost" data-auto_prompt="false">
         </div>
 
@@ -96,6 +89,17 @@ if($_SERVER['REQUEST_METHOD']=='POST' && isset($_POST['login']))
         </div>
     </div>
 </div>
+        <?php
+        if (isset($_POST['erreur'])) {
+            $err = $_POST['erreur'];
+            if ($err == 1 || $err == 2)
+                echo "<p style='color:red'>email ou mot de passe incorrect</p>";
+        }
+        
+        ?>
+    </form>
+    
+
 
 <script src="https://accounts.google.com/gsi/client" async defer></script>
 <?php

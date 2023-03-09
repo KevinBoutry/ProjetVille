@@ -70,15 +70,17 @@ if($_SERVER['REQUEST_METHOD']=='POST' && isset($_POST['inscription']))
 }
 
 ?>
-<h2>Inscription</h2>
+
 <form action="" method="post">
     <!-- Email -->
     <label for="email">Adresse Email :</label>
+    <br>
     <input type="email" name="email" id="email">
     <span class="error"><?php echo $error["email"]??"" ?></span>
     <br>
     <!-- Password -->
     <label for="password">Mot de Passe :</label>
+    <br>
     <input type="password" name="password" id="password">
     <span class="error"><?php echo $error["password"]??"" ?></span>
     <br>
@@ -86,6 +88,7 @@ if($_SERVER['REQUEST_METHOD']=='POST' && isset($_POST['inscription']))
     <label for="passwordBis">Confirmation du mot de passe :</label>
     <input type="password" name="passwordBis" id="passwordBis">
     <span class="error"><?php echo $error["passwordBis"]??"" ?></span>
+    <br>
     <br>
     <input type="submit" value="Inscription" name="inscription">
 </form>
